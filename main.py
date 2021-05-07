@@ -6,7 +6,6 @@ from awake import awake
 from itertools import cycle 
 from discord.ext import commands, tasks
 
-
 status = cycle(['prefix=( . ) | .help', 'Developed with ❤️ & 🧠 by MR-A'])
 client = commands.Bot(command_prefix = '.')
 
