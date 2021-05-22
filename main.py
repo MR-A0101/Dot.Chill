@@ -1,61 +1,49 @@
-import requests
 import discord
-import json
 import os
 from awake import awake
 from itertools import cycle 
 from discord.ext import commands, tasks
 
+client = discord.Client()
+client = commands.Bot(command_prefix=".")
+status = cycle(["prefix=(.) | .help", "Developed with ❤️ & 🧠 by MR-A "])
+#status = cycle(['🚧 Under Construction 🚧', 'We will be function soon!'])
 
-status = cycle(['prefix=( . ) | .help', 'Developed with ❤️ & 🧠 by MR-A'])
-client = commands.Bot(command_prefix = '.')
-
-def get_quote():
-  response = requests.get("https://zenquotes.io/api/random")
-  json_data = json.loads(response.text)
-  quote = json_data[0]['q'] + " ~" + json_data[0]['a']
-  return(quote)
-
+#status
 @client.event
+
 async def on_ready():
   change_status.start()
   print('{0.user} is Online!'.format(client))
-
-@client.command(pass_context = True)
-async def join(ctx):
-  channel = ctx.message.author.voice.voice_channel
-  await client.join_voice_channel(channel)
-
-@client.command(pass_context = True)
-async def leave(ctx):
-  server = ctx.message.server
-  voice_client = client.voice_client_in(server)
-  await voice_client.disconnect()
 
 @tasks.loop(seconds=10)
 async def change_status():
   await client.change_presence(activity=discord.Game(next(status)))
 
-@client.event
-async def on_message(message):
+#commands
+@client.command()
+async def hello(ctx):
+  await ctx.send("Hello! 👋")
 
-  if message.author == client.user:
-    return
+@client.command()
+async def hidden(ctx):
+  await ctx.send("**||I am a bot Developed by MR-A, vist him at https://mr-a0101.github.io/||**")
 
-  msg = message.content
-
-  if msg.startswith('.inspire'):
-    quote = get_quote()
-    await message.channel.send(quote)
-
-  if msg.startswith('.help'):
-    await message.channel.send('**🎙️ Dot.Chill Command List 🎙️**\n \n *General Commands* \n `.help` General help command.\n `.hello` Just a random Hello! \n `.hidden` See a secret of ours.\n `.inspire` Feeling down just try this command.\n \n *Voice Channel Commands* \n `.record` Voice-Channel Recording command.\n `.play` To play the recorded chat.\n `.log` Display the recording logs.')
+@client.command()
+async def aid(ctx):
+  embed = discord.Embed(
+    title = 'Title',
+    description = 'This is a description.',
+    colour = discord.Colour.blue()
+  )
   
-  if msg.startswith('.hello'):
-    await message.channel.send('Hello')
-    
-  if msg.startswith('.hidden'):
-    await message.channel.send('**||I am a bot Developed by MR-A, vist him at https://mr-a0101.github.io/||**')
+  embed.set_footer(text='This is a footer.')
+  embed.set_author(name='DotDotChill')
+  embed.add_field(name='`Command`', value='Description', inline=True)
+  embed.add_field(name='`Command`', value='Description', inline=True)
 
+  await client.say(embed=embed)
+
+#end-to-end
 awake()
 client.run(os.getenv('TOKEN'))
