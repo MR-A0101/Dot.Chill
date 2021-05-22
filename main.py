@@ -6,6 +6,7 @@ from discord.ext import commands, tasks
 
 client = discord.Client()
 client = commands.Bot(command_prefix=".")
+client.remove_command('help')
 status = cycle(["prefix=(.) | .help", "Developed with ❤️ & 🧠 by MR-A "])
 #status = cycle(['🚧 Under Construction 🚧', 'We will be functional soon!'])
 
@@ -28,21 +29,6 @@ async def hello(ctx):
 @client.command()
 async def hidden(ctx):
   await ctx.send("**||I am a bot Developed by MR-A, vist him at https://mr-a0101.github.io/||**")
-
-@client.command()
-async def aid(ctx):
-  embed = discord.Embed(
-    title = 'Title',
-    description = 'This is a description.',
-    colour = discord.Colour.blue()
-  )
-  
-  embed.set_footer(text='This is a footer.')
-  embed.set_author(name='DotDotChill')
-  embed.add_field(name='`Command`', value='Description', inline=True)
-  embed.add_field(name='`Command`', value='Description', inline=True)
-
-  await client.say(embed=embed)
 
 #end-to-end
 awake()
