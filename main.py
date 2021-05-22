@@ -7,7 +7,7 @@ from discord.ext import commands, tasks
 client = discord.Client()
 client = commands.Bot(command_prefix=".")
 status = cycle(["prefix=(.) | .help", "Developed with ❤️ & 🧠 by MR-A "])
-#status = cycle(['🚧 Under Construction 🚧', 'We will be function soon!'])
+#status = cycle(['🚧 Under Construction 🚧', 'We will be functional soon!'])
 
 #status
 @client.event
