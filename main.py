@@ -1,5 +1,6 @@
 import discord
 import os
+import random
 from awake import awake
 from itertools import cycle 
 from discord.ext import commands, tasks
@@ -32,8 +33,13 @@ async def help(ctx):
   embed.add_field(name="🟢 Join VC", value="`.join`", inline=True)
   embed.add_field(name="🔴 Leave VC", value="`.leave`", inline=True)
   embed.add_field(name="📹 Record", value="`.rec`", inline=True)
+  embed.add_field(name="⏱️ Timer", value="`.timer`", inline=True)
+  embed.add_field(name="🪙 Toss", value="`.toss`", inline=True)
+  embed.add_field(name="📒 Rec_Log", value="`.log`", inline=True)
+#  embed.set_footer(text="")
   await ctx.send(embed=embed)
 
+#Commands----------->
 @client.command()
 async def hello(ctx):
   await ctx.send("Hello! 👋")
@@ -41,6 +47,13 @@ async def hello(ctx):
 @client.command()
 async def hidden(ctx):
   await ctx.send("**||I would love to be invited to your server!||**")
+
+@client.command()
+async def toss(ctx):
+  choices = ["Heads", "Tails"]
+  await ctx.send("https://tenor.com/view/coin-flip-flip-coin-gif-19747326")
+  rancoin = random.choice(choices)
+  await ctx.send(rancoin)
 
 @client.command(pass_context = True)
 async def join(ctx):
@@ -58,7 +71,6 @@ async def leave(ctx):
     await ctx.send("I left the voice channel. 🐾")
   else: 
     await ctx.send("I am not in a voice channel. 😂")
-
 
 #end-to-end
 awake()
