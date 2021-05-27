@@ -1,60 +1,109 @@
-import requests
-import discord
-import json
 import os
+import random
+import discord
 from awake import awake
-from itertools import cycle 
+from itertools import cycle
 from discord.ext import commands, tasks
 
-status = cycle(['prefix=( . ) | .help', 'Developed with ❤️ & 🧠 by MR-A'])
-client = commands.Bot(command_prefix = '.')
 
-def get_quote():
-  response = requests.get("https://zenquotes.io/api/random")
-  json_data = json.loads(response.text)
-  quote = json_data[0]['q'] + " ~" + json_data[0]['a']
-  return(quote)
+#<--------BotBoot<-------->
+client = discord.Client()
+client = commands.Bot(command_prefix=".", intents = discord.Intents.default())
+client.remove_command('help')
+status = cycle(["prefix=(.) | .help", "Developed with ❤️ & 🧠 by\n MR-A "])
+#status = cycle(['🚧 Under Construction 🚧', 'We will be functional soon!'])
 
+
+#<--------Exception-------->
+@client.event
+async def on_command_error(ctx, error):
+  if isinstance(error, commands.CommandOnCooldown):
+    await ctx.send("**Chill bruh**, stay in the chill 乙𝔬ղΣ for {:.2f}sec✌️".format(error.retry_after))
+
+
+#<--------Status-------->
 @client.event
 async def on_ready():
-  change_status.start()
-  print('{0.user} is Online!'.format(client))
+    change_status.start()
+    print('{0.user} is Online!'.format(client))
 
-@client.command(pass_context = True)
-async def join(ctx):
-  channel = ctx.message.author.voice.voice_channel
-  await client.join_voice_channel(channel)
-
-@client.command(pass_context = True)
-async def leave(ctx):
-  server = ctx.message.server
-  voice_client = client.voice_client_in(server)
-  await voice_client.disconnect()
 
 @tasks.loop(seconds=10)
 async def change_status():
-  await client.change_presence(activity=discord.Game(next(status)))
+    await client.change_presence(activity=discord.Game(next(status)))
 
-@client.event
-async def on_message(message):
 
-  if message.author == client.user:
-    return
+#<--------Commands----------->
+@client.command()
+async def help(ctx):
+    embed = discord.Embed(
+        title="🎙️ Dot.Chill Command List 🎙️",
+        url=
+        "https://discord.com/api/oauth2/authorize?client_id=818451840399179776&permissions=8&scope=bot",
+        description=
+        "This list is constantly growing and changing as the bot evolves!",
+        color=0x1ed5f2)
+    embed.set_thumbnail(
+        url=
+        "https://cdn.discordapp.com/avatars/818451840399179776/dc3a8395b2e108ec0849de24b6aaf1b1.png"
+    )
+    embed.add_field(name="👮 Help", value="`.help`", inline=True)
+    embed.add_field(name="🤝 Greet", value="`.hello`", inline=True)
+    embed.add_field(name="🥷 Hidden", value="`.hidden`", inline=True)
+    embed.add_field(name="🟢 Join VC", value="`.join`", inline=True)
+    embed.add_field(name="🔴 Leave VC", value="`.leave`", inline=True)
+    embed.add_field(name="📹 Record", value="`.rec`", inline=True)
+    embed.add_field(name="⏱️ Timer", value="`.timer`", inline=True)
+    embed.add_field(name="🪙 Toss", value="`.toss`", inline=True)
+    embed.add_field(name="📒 Rec_Logs", value="`.r_logs`", inline=True)
+#   embed.add_field(name="🤩 Inspiration", value="`.inspire`", inline=True)
+#   embed.set_footer(text="")
+    await ctx.send(embed=embed)
 
-  msg = message.content
 
-  if msg.startswith('.inspire'):
-    quote = get_quote()
-    await message.channel.send(quote)
+@client.command()
+async def hello(ctx):
+    await ctx.send(f"Hello, {ctx.author.mention}👋")
 
-  if msg.startswith('.help'):
-    await message.channel.send('**🎙️ Dot.Chill Command List 🎙️**\n \n *General Commands* \n `.help` General help command.\n `.hello` Just a random Hello! \n `.hidden` See a secret of ours.\n `.inspire` Feeling down just try this command.\n \n *Voice Channel Commands* \n `.record` Voice-Channel Recording command.\n `.play` To play the recorded chat.\n `.log` Display the recording logs.')
-  
-  if msg.startswith('.hello'):
-    await message.channel.send('Hello')
-    
-  if msg.startswith('.hidden'):
-    await message.channel.send('**||I am a bot Developed by MR-A, vist him at https://mr-a0101.github.io/||**')
 
+@client.command()
+async def r_logs(ctx):
+    await ctx.send(f"``` \nYou do not have any Recording to be displayed. 🤪\n ```")
+
+
+@client.command()
+async def hidden(ctx):
+    await ctx.send("||*I'm chilling in " + str(len(client.guilds)) + " servers! 😎*||")
+
+
+@client.command()
+@commands.cooldown(1,7,commands.BucketType.user)
+async def toss(ctx):
+    choices = ["** Heads**", "**  Tails**"]
+    await ctx.send("🪙")
+    rancoin = random.choice(choices)
+    await ctx.send(rancoin)
+
+
+@client.command(pass_context=True)
+async def join(ctx):
+    if (ctx.author.voice):
+        channel = ctx.message.author.voice.channel
+        await channel.connect()
+        await ctx.send("Nice to see that this channel is active. 🤗")
+    else:
+        await ctx.send("You are not in a voice channel. 🙁")
+
+
+@client.command(pass_context=True)
+async def leave(ctx):
+    if (ctx.voice_client):
+        await ctx.guild.voice_client.disconnect()
+        await ctx.send("I left the voice channel. 🐾")
+    else:
+        await ctx.send("I am not in a voice channel. 😂")
+
+
+#<--------End-to-End-------->
 awake()
 client.run(os.getenv('TOKEN'))
