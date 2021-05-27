@@ -82,7 +82,7 @@ async def toss(ctx):
     choices = ["** Heads**", "**  Tails**"]
     await ctx.send("🪙")
     rancoin = random.choice(choices)
-    await ctx.asend(rancoin)
+    await ctx.send(rancoin)
 
 
 @client.command(pass_context=True)
