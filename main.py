@@ -62,11 +62,6 @@ async def help(ctx):
 
 
 @client.command()
-async def inspire(ctx):
-    await ctx.send(quote)
-
-
-@client.command()
 async def hello(ctx):
     await ctx.send(f"Hello, {ctx.author.mention}👋")
 
@@ -82,7 +77,7 @@ async def hidden(ctx):
 
 
 @client.command()
-@commands.cooldown(2,7,commands.BucketType.user)
+@commands.cooldown(1,7,commands.BucketType.user)
 async def toss(ctx):
     choices = ["** Heads**", "**  Tails**"]
     await ctx.send("🪙")
