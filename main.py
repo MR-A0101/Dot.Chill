@@ -25,7 +25,13 @@ async def on_command_error(ctx, error):
 @client.event
 async def on_ready():
     change_status.start()
-    print('{0.user} is Online!'.format(client))
+    print('''
+
+    --------------------------
+    {0.user} is Online!
+    --------------------------
+
+    '''.format(client))
 
 
 @tasks.loop(seconds=10)
