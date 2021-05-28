@@ -18,7 +18,7 @@ status = cycle(["prefix=(.) | .help", "Developed with ❤️ & 🧠 by\n MR-A "]
 @client.event
 async def on_command_error(ctx, error):
   if isinstance(error, commands.CommandOnCooldown):
-    await ctx.send("**Chill bruh**, stay in the chill 乙𝔬ղΣ for {:.2f}sec✌️".format(error.retry_after))
+    await ctx.send("**Chill bruh**, stay in the chill 乙𝔬ղΣ for `{:.2f}`sec✌️".format(error.retry_after))
 
 
 #<--------Status-------->
