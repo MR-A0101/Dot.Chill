@@ -77,7 +77,7 @@ async def hidden(ctx):
 
 
 @client.command()
-@commands.cooldown(1,7,commands.BucketType.user)
+@commands.cooldown(3,7,commands.BucketType.user)
 async def toss(ctx):
     choices = ["** Heads**", "**  Tails**"]
     await ctx.send("🪙")
