@@ -1,4 +1,5 @@
 import os
+import json
 import random
 import discord
 from awake import awake
@@ -6,7 +7,7 @@ from itertools import cycle
 from discord.ext import commands, tasks
 
 
-#<--------BotBoot<-------->
+#<--------BotBoot-------->
 client = discord.Client()
 client = commands.Bot(command_prefix=".", intents = discord.Intents.default())
 client.remove_command('help')
@@ -69,7 +70,7 @@ async def help(ctx):
 
 @client.command()
 async def hello(ctx):
-    await ctx.send(f"Hello, {ctx.author.mention}👋")
+    await ctx.reply(f"Hello, {ctx.author.mention}👋",)  
 
 
 @client.command()
@@ -79,14 +80,14 @@ async def r_logs(ctx):
 
 @client.command()
 async def hidden(ctx):
-    await ctx.send("||*I'm chilling in " + str(len(client.guilds)) + " servers! 😎*||")
+    await ctx.send(f"||*I'm chilling in " + str(len(client.guilds)) + " servers! 😎*||")
 
 
 @client.command()
 @commands.cooldown(3,7,commands.BucketType.user)
 async def toss(ctx):
-    choices = ["** Heads**", "**  Tails**"]
-    await ctx.send("🪙")
+    choices = [f"** Heads**", f"**  Tails**"]
+    await ctx.send(f"🪙")
     rancoin = random.choice(choices)
     await ctx.send(rancoin)
 
@@ -96,18 +97,18 @@ async def join(ctx):
     if (ctx.author.voice):
         channel = ctx.message.author.voice.channel
         await channel.connect()
-        await ctx.send("Nice to see that this channel is active. 🤗")
+        await ctx.send(f"Nice to see that this channel is active. 🤗")
     else:
-        await ctx.send("You are not in a voice channel. 🙁")
+        await ctx.send(f"You are not in a voice channel. 🙁")
 
 
 @client.command(pass_context=True)
 async def leave(ctx):
     if (ctx.voice_client):
         await ctx.guild.voice_client.disconnect()
-        await ctx.send("I left the voice channel. 🐾")
+        await ctx.send(f"I left the voice channel. 🐾")
     else:
-        await ctx.send("I am not in a voice channel. 😂")
+        await ctx.send(f"I am not in a voice channel. 😂")
 
 
 #<--------End-to-End-------->
