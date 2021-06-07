@@ -87,7 +87,7 @@ async def hidden(ctx):
 @commands.cooldown(3,7,commands.BucketType.user)
 async def toss(ctx):
     choices = [f"** Heads**", f"**  Tails**"]
-    await ctx.send(f"🪙")
+    await ctx.reply(f"🪙")
     rancoin = random.choice(choices)
     await ctx.send(rancoin)
 
