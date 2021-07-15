@@ -1,4 +1,4 @@
-import discord 
+import discord
 import asyncio
 from discord.ext import commands
 
@@ -13,30 +13,30 @@ class TimerCog(commands.Cog):
       secondsint = int(seconds)
       if secondsint > 420:
         await ctx.send("Not over 7 minutes")
-        await ctx.send("""```bash
+        await ctx.send("""```r
 Time️️ ⏲️ Stamps
-Seconds	Minutes
-060 sec	1 min
-120 sec	2 min
-180 sec	3 min
-240 sec	4 min
-300 sec	5 min
-360 sec	6 min
-420 sec	7 min
+Seconds    Minutes
+060 sec    1 min
+120 sec    2 min
+180 sec    3 min
+240 sec    4 min
+300 sec    5 min
+360 sec    6 min
+420 sec    7 min
 ```""")
         raise BaseException
       if secondsint <= 0:
         await ctx.send("No negatives")
-        await ctx.send("""```bash
+        await ctx.send("""```r
 Time️️ ⏲️ Stamps
-Seconds	Minutes
-060 sec	1 min
-120 sec	2 min
-180 sec	3 min
-240 sec	4 min
-300 sec	5 min
-360 sec	6 min
-420 sec	7 min
+Seconds    Minutes
+060 sec    1 min
+120 sec    2 min
+180 sec    3 min
+240 sec    4 min
+300 sec    5 min
+360 sec    6 min
+420 sec    7 min
 ```""")
         raise BaseException
 
@@ -53,16 +53,16 @@ Seconds	Minutes
       await ctx.reply(f"{ctx.author.mention}, Your timer for ``{seconds}`` seconds has ended.")
     except ValueError:
       await ctx.send("Enter an positive numerical value.")
-      await ctx.send("""```bash
+      await ctx.send("""```r
 Time️️ ⏲️ Stamps
-Seconds	Minutes
-060 sec	1 min
-120 sec	2 min
-180 sec	3 min
-240 sec	4 min
-300 sec	5 min
-360 sec	6 min
-420 sec	7 min
+Seconds    Minutes
+060 sec    1 min
+120 sec    2 min
+180 sec    3 min
+240 sec    4 min
+300 sec    5 min
+360 sec    6 min
+420 sec    7 min
 ```""")
 
 def setup(client):
