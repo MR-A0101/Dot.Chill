@@ -1,6 +1,5 @@
 import discord 
 from discord.ext import commands
-from discord_components import DiscordComponents, Button, ButtonStyle, InteractionType
 
 class InviteCog(commands.Cog):
   def __init__(self, client):
