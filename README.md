@@ -9,7 +9,7 @@
 <h4 align="center">Music, Voice Recording, Fun, Stream Alerts and Fully Modular</h4>
 <h4 align="center"> Python based Discord Bot</h4>
 
- <a align="center"><img src="https://raw.githubusercontent.com/MR-A0101/Dot.Chill/master/resources/gif/replit_boot3673.gif" alt="Dot Dot Chill"></a>................................................ <a align="center"><img src="https://raw.githubusercontent.com/MR-A0101/Dot.Chill/master/resources/gif/dotdotchill.gif" alt="Dot Dot Chill"></a> 
+ <a align="center"><img src="https://raw.githubusercontent.com/MR-A0101/Dot.Chill/master/resources/gif/replit_boot3673.gif" alt="Dot Dot Chill"></a>............................................. <a align="center"><img src="https://raw.githubusercontent.com/MR-A0101/Dot.Chill/master/resources/gif/dotdotchill.gif" alt="Dot Dot Chill"></a> 
 ---
 
 ### Features
