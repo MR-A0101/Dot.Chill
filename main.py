@@ -1,6 +1,5 @@
 import os
 import json
-import random
 import discord
 from awake import awake
 from itertools import cycle
@@ -20,6 +19,7 @@ status = cycle(["prefix=(.) | .help", "Developed with ❤️ & 🧠 by\n MR-A "]
 async def on_command_error(ctx, error):
   if isinstance(error, commands.CommandOnCooldown):
     await ctx.send("**Chill bruh**, stay in the chill 乙𝔬ղΣ for `{:.2f}`sec✌️".format(error.retry_after))
+    DiscordComponents(client)
 
 
 #<--------Status-------->
@@ -42,38 +42,6 @@ async def change_status():
 
 #<--------Commands----------->
 @client.command()
-async def help(ctx):
-    embed = discord.Embed(
-        title="🎙️ Dot.Chill Command List 🎙️",
-        url=
-        "https://discord.com/api/oauth2/authorize?client_id=818451840399179776&permissions=8&scope=bot",
-        description=
-        "This list is constantly growing and changing as the bot evolves!",
-        color=0x1ed5f2)
-    embed.set_thumbnail(
-        url=
-        "https://cdn.discordapp.com/avatars/818451840399179776/dc3a8395b2e108ec0849de24b6aaf1b1.png"
-    )
-    embed.add_field(name="👮 Help", value="`.help`", inline=True)
-    embed.add_field(name="🤝 Greet", value="`.hello`", inline=True)
-    embed.add_field(name="🥷 Hidden", value="`.hidden`", inline=True)
-    embed.add_field(name="🟢 Join VC", value="`.join`", inline=True)
-    embed.add_field(name="🔴 Leave VC", value="`.leave`", inline=True)
-    embed.add_field(name="📹 Record", value="`.rec`", inline=True)
-    embed.add_field(name="⏱️ Timer", value="`.timer`", inline=True)
-    embed.add_field(name="🪙 Toss", value="`.toss`", inline=True)
-    embed.add_field(name="📒 Rec_Logs", value="`.r_logs`", inline=True)
-#   embed.add_field(name="🤩 Inspiration", value="`.inspire`", inline=True)
-#   embed.set_footer(text="")
-    await ctx.send(embed=embed)
-
-
-@client.command()
-async def hello(ctx):
-    await ctx.reply(f"Hello, {ctx.author.mention}👋",)  
-
-
-@client.command()
 async def r_logs(ctx):
     await ctx.send(f"``` \nYou do not have any Recording to be displayed. 🤪\n ```")
 
@@ -83,32 +51,10 @@ async def hidden(ctx):
     await ctx.send(f"||*I'm chilling in " + str(len(client.guilds)) + " servers! 😎*||")
 
 
-@client.command()
-@commands.cooldown(3,7,commands.BucketType.user)
-async def toss(ctx):
-    choices = [f"** Heads**", f"**  Tails**"]
-    await ctx.reply(f"🪙")
-    rancoin = random.choice(choices)
-    await ctx.send(rancoin)
-
-
-@client.command(pass_context=True)
-async def join(ctx):
-    if (ctx.author.voice):
-        channel = ctx.message.author.voice.channel
-        await channel.connect()
-        await ctx.send(f"Nice to see that this channel is active. 🤗")
-    else:
-        await ctx.send(f"You are not in a voice channel. 🙁")
-
-
-@client.command(pass_context=True)
-async def leave(ctx):
-    if (ctx.voice_client):
-        await ctx.guild.voice_client.disconnect()
-        await ctx.send(f"I left the voice channel. 🐾")
-    else:
-        await ctx.send(f"I am not in a voice channel. 😂")
+#<--------Cogs-Int----------->
+for filename in os.listdir('./cogs'):
+  if filename.endswith('.py'):
+   client.load_extension(f'cogs.{filename[:-3]}')
 
 
 #<--------End-to-End-------->
