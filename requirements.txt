@@ -1,2 +1,5 @@
 pip>=21.1.3
 discord-py-slash-command>=2.3.2
+discord_components>=1.1.4
+discord-components>=1.1.4
+discord.py[voice]
