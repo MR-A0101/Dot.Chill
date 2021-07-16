@@ -7,6 +7,7 @@ class InviteCog(commands.Cog):
     self.client = client
 
   @commands.command()
+  #@commands.has_permissions(administrator=False)
   async def invite(self, ctx):
     await ctx.reply(f"‏‏‎🥳 Hey, **{ctx.author.display_name}** invite me into your server too!🎉",
       components=[
