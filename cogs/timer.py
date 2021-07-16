@@ -40,7 +40,7 @@ Seconds    Minutes
 ```""")
         raise BaseException
 
-      message = await ctx.send(f"Timer: ``{seconds}`` seconds left!")
+      message = await ctx.send(f"Timer: `{seconds}` seconds left!")
 
       while True:
         secondsint-= 1
@@ -48,9 +48,9 @@ Seconds    Minutes
           await message.edit(content="Timer ⏰ Endded!")
           break
 
-        await message.edit(content=f"Timer: ``{secondsint}`` seconds left!")
+        await message.edit(content=f"Timer: `{secondsint}` seconds left!")
         await asyncio.sleep(1)
-      await ctx.reply(f"{ctx.author.mention}, Your timer for ``{seconds}`` seconds has ended.")
+      await ctx.reply(f"{ctx.author.mention}, Your timer for `{seconds}` seconds has ended.")
     except ValueError:
       await ctx.send("Enter an positive numerical value.")
       await ctx.send("""```r

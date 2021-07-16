@@ -11,7 +11,7 @@ class HelpCog(commands.Cog):
     embed = discord.Embed(
         title="🎙️ Dot.Chill Command List 🎙️",
         url=
-        "https://discord.com/api/oauth2/authorize?client_id=818451840399179776&permissions=8&scope=bot",
+        "https://github.com/MR-A0101/Dot.Chill#features",
         description=
         "This list is constantly growing and changing as the bot evolves!",
         color=0x1ed5f2)
