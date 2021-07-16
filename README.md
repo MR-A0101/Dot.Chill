@@ -67,6 +67,10 @@
         <td>✨ Found Dot.Chill cool then invite him to your very own server.</td>
         </tr>
         <tr>
+        <td>.profile</td>
+        <td>♂️ See yours and others Discord profile.</td>
+        </tr>
+        <tr>
     </tbody>
 </table>
 
