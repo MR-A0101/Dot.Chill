@@ -1,5 +1,6 @@
 import discord 
 from discord.ext import commands
+from discord_components import *
 
 class InviteCog(commands.Cog):
   def __init__(self, client):
@@ -7,12 +8,10 @@ class InviteCog(commands.Cog):
 
   @commands.command()
   async def invite(self, ctx):
-    embed = discord.Embed(
-        description=
-        "This list is constantly growing and changing as the bot evolves!",
-        color=0x1ed5f2)
-
-    await ctx.send(embed=embed)
+    await ctx.reply(f"‏‏‎🥳 Hey, **{ctx.author.display_name}** invite me into your server too!🎉",
+      components=[
+       Button(style=5 ,url="https://discord.com/api/oauth2/authorize?client_id=818451840399179776&permissions=8&scope=bot", label="Invite")
+       ])
 
 def setup(client):
   client.add_cog(InviteCog(client))

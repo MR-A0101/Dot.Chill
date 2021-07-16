@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from discord_components import *
 
 class HelpCog(commands.Cog):
   def __init__(self, client):
@@ -28,9 +29,14 @@ class HelpCog(commands.Cog):
     embed.add_field(name="🪙 Toss", value="`.toss`", inline=True)
     embed.add_field(name="📒 Rec_Logs", value="`.r_logs`", inline=True)
     embed.add_field(name="🏓 Ping", value="`.ping`", inline=True)
+    embed.add_field(name="‏‏‎🥳 Invite", value="`.invite`", inline=True)
+    embed.add_field(name="‏‏‎🤸‍♂️ Profile", value="`.profile`", inline=True)
 #   embed.add_field(name="🤩 Inspiration", value="`.inspire`", inline=True)
     embed.set_footer(text="For more help with a command type '.commandxhelp' eg: '.timerxhelp'")
     await ctx.send(embed=embed)
+
+#   await ctx.send("‏‏‎ ‎", components=[Button(style=5 ,url="https://google.com", label="Invite")])
+
 
 
 def setup(client):

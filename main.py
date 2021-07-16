@@ -3,6 +3,7 @@ import json
 import discord
 from awake import awake
 from itertools import cycle
+from discord_components import *
 from discord.ext import commands, tasks
 
 
@@ -19,7 +20,6 @@ status = cycle(["prefix=(.) | .help", "Developed with ❤️ & 🧠 by\n MR-A "]
 async def on_command_error(ctx, error):
   if isinstance(error, commands.CommandOnCooldown):
     await ctx.send("**Chill bruh**, stay in the chill 乙𝔬ղΣ for `{:.2f}`sec✌️".format(error.retry_after))
-    DiscordComponents(client)
 
 
 #<--------Status-------->
@@ -33,6 +33,7 @@ async def on_ready():
     --------------------------
 
     '''.format(client))
+    DiscordComponents(client)
 
 
 @tasks.loop(seconds=10)
