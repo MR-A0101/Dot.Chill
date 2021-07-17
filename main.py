@@ -49,7 +49,12 @@ async def r_logs(ctx):
 
 @client.command()
 async def hidden(ctx):
-    await ctx.send(f"||*I'm chilling in " + str(len(client.guilds)) + " servers! 😎*||")
+    embed = discord.Embed(
+        description=
+        f"||*I'm chilling in " + str(len(client.guilds)) + " servers! 😎*||",
+        color=0x1d2333)
+
+    await ctx.send(embed=embed)
 
 
 #<--------Cogs-Int----------->

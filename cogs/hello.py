@@ -5,7 +5,7 @@ class HelloCog(commands.Cog):
   def __init__(self, client):
     self.client = client
 
-  @commands.command()
+  @commands.command(aliases=['hi', 'hey'])
   async def hello(self, ctx):
     await ctx.reply(f"Hello, {ctx.author.mention}👋",)  
 
