@@ -13,7 +13,7 @@ class ProfileCog(commands.Cog):
     embed = discord.Embed(
         title=f"Profile of {member.name}",
         url=
-        f"https://discord.com/channels/@me/{member.id}",
+        f"https://discord.com/users/{member.id}",
         color=0x592bef, timestamp = datetime.utcnow())
     embed.set_thumbnail(url=f"{member.avatar_url}"
     )
