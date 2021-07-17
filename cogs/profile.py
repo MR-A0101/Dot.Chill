@@ -19,15 +19,15 @@ class ProfileCog(commands.Cog):
     )
 
     embed.add_field(
-      name="Server Nickname", value=f"```{member.nick}```")
+      name="Server Nickname", value=f"```{member.nick}```", inline=True)
     embed.add_field(
-      name="Joined Discord", value=f"```{member.created_at.strftime('%d.%m.%y, %H:%M Hrs')}```")
+      name="Joined Discord", value=f"```{member.created_at.strftime('%d.%m.%y, %H:%M Hrs')}```", inline=True)
     embed.add_field(
       name="Permissions", value=f"```{member.guild_permissions}```")
     embed.add_field(
       name="Top Role", value=f"```{member.top_role}```")
     embed.add_field(
-      name="Joined Server", value=f"```{member.joined_at.strftime('%d.%m.%y, %H:%M Hrs')}```")
+      name="Joined Server", value=f"```{member.joined_at.strftime('%d.%m.%y, %H:%M Hrs')}```", inline=True)
     embed.add_field(
       name="Bot?", value=f"```{member.bot}```")
     embed.add_field(

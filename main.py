@@ -1,6 +1,7 @@
 import os
 import json
 import discord
+import asyncio
 from awake import awake
 from itertools import cycle
 from discord_components import *
@@ -20,6 +21,15 @@ status = cycle(["prefix=(.) | .help", "Developed with ❤️ & 🧠 by\n MR-A "]
 async def on_command_error(ctx, error):
   if isinstance(error, commands.CommandOnCooldown):
     await ctx.send("**Chill bruh**, stay in the chill 乙𝔬ղΣ for `{:.2f}`sec✌️".format(error.retry_after))
+
+  if isinstance(error, commands.MissingPermissions):
+    message = await ctx.send("You need Admin privileges to run this command!")
+    await asyncio.sleep(0.1)
+  count = 0
+  while (count == 0):
+    await message.edit(content=f"{ctx.author.mention} tried to use an unauthorised command.")
+    await asyncio.sleep(0.1)
+    await message.edit("‏‏‎You need Admin privileges to run this command!")
 
 
 #<--------Status-------->
