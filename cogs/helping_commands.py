@@ -10,8 +10,10 @@ class HelpingCog(commands.Cog):
   async def A(self, ctx):
     embed = discord.Embed(
         description=
-        "```This is an unlist embed (A)```",
+        f"The function is currently under devlopement.",
         color=0x004e92)
+
+    embed.set_footer(text=f"{ctx.author.id}")
 
     await ctx.send(embed=embed)
 
@@ -19,8 +21,10 @@ class HelpingCog(commands.Cog):
   async def B(self, ctx):
     embed = discord.Embed(
         description=
-        "This is an unlist embed (B)",
+        f"The function is currently under devlopement.",
         color=0x43cea2)
+
+    embed.set_footer(text=f"{ctx.author.id}")
 
     await ctx.send(embed=embed)
 
@@ -28,8 +32,10 @@ class HelpingCog(commands.Cog):
   async def C(self, ctx):
     embed = discord.Embed(
         description=
-        "This is an unlist embed (C)",
+        f"The function is currently under devlopement.",
         color=0x4568dc)
+
+    embed.set_footer(text=f"{ctx.author.id}")
 
     await ctx.send(embed=embed)
 

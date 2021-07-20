@@ -18,4 +18,3 @@ class RecordCog(commands.Cog):
 
 def setup(client):
   client.add_cog(RecordCog(client))
-  {ctx.author.nick}
