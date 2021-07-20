@@ -67,6 +67,18 @@ python-versions = "*"
 "discord.py" = ">=1.7.3"
 
 [[package]]
+name = "discord-components"
+version = "1.1.4"
+description = "An unofficial library for discord components."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+aiohttp = "*"
+"discord.py" = "*"
+
+[[package]]
 name = "discord.py"
 version = "1.7.3"
 description = "A Python wrapper for the Discord API"
@@ -181,7 +193,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "67179e68f36674eb3800ba17a69b0effefe435e61bc749fad79640b809325a2e"
+content-hash = "23f80c6efca528156f9c472cb6796cc7e548ab1b9dacffe943c30b6d4f64d5f5"
 
 [metadata.files]
 aiohttp = [
@@ -242,6 +254,10 @@ click = [
 discord = [
     {file = "discord-1.7.3-py3-none-any.whl", hash = "sha256:248d728356e149c818a81b94659047a19305ea1623d4810bbb342f6b7df55f36"},
     {file = "discord-1.7.3.tar.gz", hash = "sha256:846dd3d66888c2e0a8bd9120d8778a0fe088c003a7f6451668497f14e322a304"},
+]
+discord-components = [
+    {file = "discord_components-1.1.4-py3-none-any.whl", hash = "sha256:701c49895c6d69060d79a436ed3ba2bfbb9e92457a4548a5bd14daa7bcbb9fff"},
+    {file = "discord_components-1.1.4.tar.gz", hash = "sha256:11768d28bf3b7ad20f378328e0f02e3322579167d97ae672da59c09d31bc61e7"},
 ]
 "discord.py" = [
     {file = "discord.py-1.7.3-py3-none-any.whl", hash = "sha256:c6f64db136de0e18e090f6752ea68bdd4ab0a61b82dfe7acecefa22d6477bb0c"},

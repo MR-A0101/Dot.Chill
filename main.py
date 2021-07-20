@@ -22,6 +22,9 @@ async def on_command_error(ctx, error):
   if isinstance(error, commands.CommandOnCooldown):
     await ctx.send("**Chill bruh**, stay in the chill 乙𝔬ղΣ for `{:.2f}`sec✌️".format(error.retry_after))
 
+  if isinstance(error, commands.MissingRequiredArgument):
+    await ctx.send("Missing Required Argument for more help type: `.help_command name` | `eg: .help_help`😉.")
+
   if isinstance(error, commands.MissingPermissions):
     message = await ctx.send("You need Admin privileges to run this command!")
     await asyncio.sleep(0.1)
