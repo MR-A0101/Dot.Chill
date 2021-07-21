@@ -9,6 +9,7 @@ class InviteCog(commands.Cog):
   @commands.command(aliases =['i'])
   #@commands.has_permissions(administrator=False)
   async def invite(self, ctx):
+    embed = discord.Embed()
     await ctx.reply(f"‏‏‎🥳Hey, **{ctx.author.display_name}** invite me into your server too!🎉",
       components=[
        Button(style=5 ,url="https://discord.com/api/oauth2/authorize?client_id=818451840399179776&permissions=8&scope=bot", label="Invite")

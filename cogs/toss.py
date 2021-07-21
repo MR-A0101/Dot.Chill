@@ -13,6 +13,6 @@ class TossCog(commands.Cog):
     rancoin = random.choice(choices)
     await ctx.reply(f"🪙")
     await ctx.send(rancoin)  
-
+    
 def setup(client):
   client.add_cog(TossCog(client))

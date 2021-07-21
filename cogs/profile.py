@@ -25,13 +25,21 @@ class ProfileCog(commands.Cog):
     embed.add_field(
       name="Permissions", value=f"```{member.guild_permissions}```")
     embed.add_field(
-      name="Top Role", value=f"```{member.top_role}```")
+      name="Region", value=f"```{ctx.guild.region}```")
     embed.add_field(
       name="Joined Server", value=f"```{member.joined_at.strftime('%d.%m.%y, %H:%M Hrs')}```", inline=True)
     embed.add_field(
       name="Bot?", value=f"```{member.bot}```")
     embed.add_field(
-      name="Activity", value=f"```{member.activities}```")
+      name="Activities", value=f"```{member.activities}```", inline=False)
+    embed.add_field(
+      name="Activity", value=f"```{member.activity}```", inline=False)
+#    embed.add_field(
+#      name="Top Role", value=f"{member.top_role.mention}", inline=True)  
+#    embed.add_field(
+#      name="Roles", value=f"{member.top_role.mention}", inline=True)
+#    embed.add_field(
+#      name="Active Nitro", value=f"```{member.premium_since}```", inline=True)'''
     embed.set_footer(text=f"Requested by {ctx.author.nick}")
     await ctx.send(embed=embed)
 
