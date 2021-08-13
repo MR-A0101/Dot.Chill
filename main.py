@@ -49,7 +49,6 @@ async def on_ready():
     '''.format(client))
     DiscordComponents(client)
 
-
 @tasks.loop(seconds=10)
 async def change_status():
     await client.change_presence(activity=discord.Game(next(status)))
@@ -69,12 +68,20 @@ async def hidden(ctx):
         color=0x1d2333)
 
     await ctx.send(embed=embed)
+    await ctx.send(embed=embed)
 
+@client.command()
+@commands.has_permissions(administrator=True)
+async def bye(ctx):
+  await ctx.send("This server is costing me an inrogranic growth therefore I will be leaving this server!")
+  await ctx.guild.leave()
 
 #<--------Cogs-Int----------->
 for filename in os.listdir('./cogs'):
   if filename.endswith('.py'):
    client.load_extension(f'cogs.{filename[:-3]}')
+  if filename.endswith('.js'):
+    client.load_extension(f'cogs.{filename[:-3]}')
 
 
 #<--------End-to-End-------->
