@@ -68,7 +68,6 @@ async def hidden(ctx):
         color=0x1d2333)
 
     await ctx.send(embed=embed)
-    await ctx.send(embed=embed)
 
 @client.command()
 @commands.has_permissions(administrator=True)
